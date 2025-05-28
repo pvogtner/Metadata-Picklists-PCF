@@ -20,3 +20,6 @@ These are 2 PCF controls using Fluent v9 - one for tables and one for attributes
  
 #### Output:
 - String: *DisplayName|LogicalName*
+
+
+![MetadataPicklists](https://github.com/pvogtner/Metadata-Picklists-PCF/blob/0c74491a6cd854a440d2399d2966a38df0b52e90/pics/MetadataPicklists.gif)
