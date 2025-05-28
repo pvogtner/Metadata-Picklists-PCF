@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="PVPCF" constructor="MetadataPicklistTable" version="0.0.1" display-name-key="MetadataPicklistTable" description-key="MetadataPicklistTable description" control-type="virtual" >
+    <external-service-usage enabled="false">
+    </external-service-usage>
+    <property name="value" display-name-key="value" description-key="value" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="showTables" display-name-key="Show Tables" description-key="Show Tables" of-type="Enum" usage="input" required="true">
+      <value name="APPONLY" display-name-key="Only Show Tables in App" description-key="Only Show Tables in App" default="true">APPONLY</value>
+      <value name="ALLTABLES" display-name-key="Show All Tables" description-key="Show All Tables" default="true">ALLTABLES</value>
+    </property>
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.46.2" />
+    </resources>
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>
