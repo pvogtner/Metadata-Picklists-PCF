@@ -14,6 +14,7 @@
       <value name="String" display-name-key="String" description-key="Filter by String">String</value>
       <value name="Picklist" display-name-key="Picklist" description-key="Filter by Picklist">Picklist</value>
       <value name="Lookup" display-name-key="Lookup" description-key="Filter by Lookup">Lookup</value>
+      <value name="Number" display-name-key="Number" description-key="Filter by Integer, Decimal, Float, or Money">Number</value>
     </property>
     <resources>
       <code path="index.ts" order="1"/>
