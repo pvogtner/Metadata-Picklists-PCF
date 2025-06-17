@@ -71,10 +71,11 @@ export const MetadataPicklistAttributeComponent = React.memo(
     };
 
     const onOptionSelect: ComboboxProps["onOptionSelect"] = (event, data) => {
-      const matchingOption = data.optionText && options.some((option) => option.DisplayName.includes(data.optionText!));
+      //const matchingOption = data.optionText && options.some((option) => option.DisplayName.includes(data.optionText!));
+      const displayName = data.optionValue && data.optionValue == "placeholder" ? "" : options.find((option) => option.LogicalName === data.optionValue)?.DisplayName;
       setSelectedOptions(data.optionValue == "placeholder" ? [] : [data.optionValue].filter((v): v is string => typeof v === "string"));
-      setValue(data.optionValue == "placeholder" ? "" : data.optionText);
-      OnValueChanged(data.optionValue == "placeholder" || !data.optionText ? undefined : `${data.optionText}|${data.optionValue}`);
+      setValue(data.optionValue == "placeholder" ? "" : displayName);
+      OnValueChanged(data.optionValue == "placeholder" || !data.optionText ? undefined : `${displayName}|${data.optionValue}`);
       if(data.optionValue == "placeholder") {
         setMatchingOptions([...options]);
       }
@@ -98,7 +99,7 @@ export const MetadataPicklistAttributeComponent = React.memo(
             --Select--
           </Option>
           {matchingOptions.map((option) => (
-            <Option key={option.LogicalName} value={option.LogicalName}>{option.DisplayName}</Option>
+            <Option key={option.LogicalName} value={option.LogicalName}>{`${option.DisplayName} (${option.LogicalName})`}</Option>
           ))}
         </Combobox>
       </FluentProvider>
