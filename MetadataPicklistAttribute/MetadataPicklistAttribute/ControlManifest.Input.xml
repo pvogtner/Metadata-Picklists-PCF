@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="PVPCF" constructor="MetadataPicklistAttribute" version="0.0.1" display-name-key="MetadataPicklistAttribute" description-key="MetadataPicklistAttribute description" control-type="virtual" >
+  <control namespace="PVPCF" constructor="MetadataPicklistAttribute" version="0.0.1" display-name-key="MetadataPicklistAttribute" description-key="MetadataPicklistAttribute description" control-type="virtual">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="tableName" display-name-key="Table_Name" description-key="Table Name" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="customFilter" display-name-key="Custom_Filter" description-key="Custom Attribute Filter" of-type="Enum" usage="input" required="true">
+      <value name="None" display-name-key="No Filter" description-key="No Custom Filter" default="true">None</value>
+      <value name="Boolean" display-name-key="Boolean" description-key="Filter by Boolean">Boolean</value>
+      <value name="DateTime" display-name-key="DateTime" description-key="Filter by DateTime">DateTime</value>
+      <value name="Integer" display-name-key="Integer" description-key="Filter by Integer">Integer</value>
+      <value name="Decimal" display-name-key="Decimal" description-key="Filter by Decimal">Decimal</value>
+      <value name="String" display-name-key="String" description-key="Filter by String">String</value>
+      <value name="Picklist" display-name-key="Picklist" description-key="Filter by Picklist">Picklist</value>
+      <value name="Lookup" display-name-key="Lookup" description-key="Filter by Lookup">Lookup</value>
+    </property>
     <resources>
       <code path="index.ts" order="1"/>
       <platform-library name="React" version="16.14.0" />
