@@ -9,51 +9,18 @@ import {
   OptionOnSelectData,
 } from "@fluentui/react-components";
 import { IInputs } from "./generated/ManifestTypes";
-import { IOption } from "./Interfaces";
 import { useMetadata } from "./useMetadata";
+import { useStyles } from "./useStyles";
 
 export interface IMetadataPicklistTableProps {
+  Value: string | undefined;
   Context: ComponentFramework.Context<IInputs>;
   OnValueChange: (val: string | undefined) => void;
 }
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-    width: "100%",
-    maxWidth: "1000px",
-  },
-  dropdown: {
-    width: "100%",
-    minWidth: "10px",
-  },
-  listbox: {
-    backgroundColor: "#ffffff",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
-    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-    fontSize: "14px",
-    zIndex: 9999, // fix overlapping/clipping issues
-  },
-  option: {
-    padding: "10px 16px",
-    fontSize: "14px",
-    cursor: "pointer",
-    ":hover": {
-      backgroundColor: "#f3f2f1",
-    },
-    "&[aria-selected='true']": {
-      backgroundColor: "#e5f1fb",
-      fontWeight: 600,
-    },
-  },
-});
-
 export const MetadataPicklistTableComponent = React.memo(
   (props: IMetadataPicklistTableProps) => {
-    const { Context, OnValueChange } = props;
+    const { Value, Context, OnValueChange } = props;
     const [isHovered, setIsHovered] = React.useState(false);
     const selectedOptionRaw: string | null = Context.parameters.value.raw;
     const selectedOption: string | null | undefined = selectedOptionRaw ? selectedOptionRaw.split("|")[0] : undefined;
@@ -67,9 +34,14 @@ export const MetadataPicklistTableComponent = React.memo(
     console.log("selectedOption", selectedOption);
 
     const styles = useStyles();
-
     const { tables } = useMetadata(Context);
     console.log("tables", tables);
+   
+    React.useEffect(() => {
+      setSelectedOptions(selectedOptionValue ? [selectedOptionValue] : []);
+      setValue(selectedOption);
+      console.log("useEffect - selectedOptions", selectedOptions);
+    }, [Value, Context]);
 
     const onOptionSelect= (ev: SelectionEvents, data: OptionOnSelectData) => {
       setSelectedOptions(data.optionValue == "placeholder" ? [] : [data.optionValue].filter((v): v is string => typeof v === "string"));
