@@ -30,17 +30,12 @@ export const MetadataPicklistTableComponent = React.memo(
     const [selectedOptions, setSelectedOptions] = React.useState<string[]>(selectedOptionValue ? [selectedOptionValue] : []);
     const [value, setValue] = React.useState<string | undefined>(selectedOption);
     
-    console.log("selectedOptionValue", selectedOptionValue);
-    console.log("selectedOption", selectedOption);
-
     const styles = useStyles();
     const { tables } = useMetadata(Context);
-    console.log("tables", tables);
    
     React.useEffect(() => {
       setSelectedOptions(selectedOptionValue ? [selectedOptionValue] : []);
       setValue(selectedOption);
-      console.log("useEffect - selectedOptions", selectedOptions);
     }, [Value, Context]);
 
     const onOptionSelect= (ev: SelectionEvents, data: OptionOnSelectData) => {

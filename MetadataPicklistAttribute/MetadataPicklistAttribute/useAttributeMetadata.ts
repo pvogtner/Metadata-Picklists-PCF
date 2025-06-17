@@ -71,7 +71,6 @@ export const useAttributeMetadata = (Context: ComponentFramework.Context<IInputs
                     LogicalName: attribute.LogicalName,
                 })).slice().sort((a, b) => a.DisplayName.localeCompare(b.DisplayName));
 
-                console.log("Attributes: ", dataSorted);
                 setOptions(dataSorted);
             } catch (error) {
                 console.log("Error fetching metadata:", error);

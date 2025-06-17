@@ -20,7 +20,6 @@ export class MetadataPicklistAttribute implements ComponentFramework.ReactContro
     }
 
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        console.log("Metadata Attribute UpdateView: ", context.parameters);
         const props: IMetadataPicklistAttributeComponentProps = { 
             Value: context.parameters.value.raw ?? undefined,
             Context: this._context,
