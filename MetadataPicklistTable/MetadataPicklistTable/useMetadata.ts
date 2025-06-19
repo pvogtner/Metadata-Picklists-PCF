@@ -80,13 +80,11 @@ export const useMetadata = (Context: ComponentFramework.Context<IInputs>) => {
                     appTablesList.includes(table.LogicalName)
                 );
                 const filteredTablesSorted: ITableMetadata[] = filteredTables.sort((a: ITableMetadata, b: ITableMetadata) => a.LogicalName.localeCompare(b.LogicalName));
-                console.log("Filtered Tables: ", filteredTablesSorted);
                 setTables(filteredTablesSorted);
             }
             else if (TableList === "ALLTABLES") {
                 const metadataTables: ITableMetadataResponse = await getMetadata();
                 const filteredTables: ITableMetadata[] = metadataTables.value.sort((a: ITableMetadata, b: ITableMetadata) => a.LogicalName.localeCompare(b.LogicalName));
-                console.log("All Tables: ", filteredTables);
                 setTables(filteredTables);
             }
         };

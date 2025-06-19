@@ -11,10 +11,7 @@ export const useStyles = makeStyles({
   },
   dropdown: {
     width: "100%",
-    minWidth: "unset",
-    '>.fui-Combobox__input': {
-        minWidth: "10px",
-    }
+    minWidth: "10px",
   },
   listbox: {
     backgroundColor: "#ffffff",
