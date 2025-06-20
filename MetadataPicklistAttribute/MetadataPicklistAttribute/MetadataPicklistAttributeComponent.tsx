@@ -12,6 +12,7 @@ import { useStyles } from "./useStyles";
 
 export interface IMetadataPicklistAttributeComponentProps {
   Value: string | undefined;
+  OutputFormat: "BOTH" | "LOGICAL_ONLY";
   Context: ComponentFramework.Context<IInputs>;
   Table: string;
   OnValueChanged: (val: string | undefined) => void;
@@ -19,20 +20,22 @@ export interface IMetadataPicklistAttributeComponentProps {
 
 export const MetadataPicklistAttributeComponent = React.memo(
   (props: IMetadataPicklistAttributeComponentProps) => {
-    const { Value, Context, Table, OnValueChanged } = props;
+    const { Value, OutputFormat, Context, Table, OnValueChanged } = props;
     const tableName: string = Table.includes("|") ? Table.split("|")[1] : Table;
-
-    const selectedOptionRaw: string | null = Context.parameters.value.raw;
-    const selectedOptionValue: string | null | undefined = selectedOptionRaw ? selectedOptionRaw.split("|")[1] : undefined;
     const theme: Theme = Context.fluentDesignLanguage?.tokenTheme as Theme;
-    
-    const [selectedOptions, setSelectedOptions] = React.useState<string[]>(selectedOptionValue ? [selectedOptionValue] : []);
     const [isHovered, setIsHovered] = React.useState(false);
     const [value, setValue] = React.useState<string | undefined>();
 
     const styles = useStyles();
     const { options } = useAttributeMetadata(Context, tableName);
 
+    const selectedOptionValue: string | null | undefined = !Value
+      ? undefined
+      : Value.includes("|")
+        ? Value.split("|")[1]
+        : Value;
+    
+    const [selectedOptions, setSelectedOptions] = React.useState<string[]>(selectedOptionValue ? [selectedOptionValue] : []);
     const [matchingOptions, setMatchingOptions] = React.useState([...options]);
 
     React.useEffect(() => { 
@@ -71,11 +74,15 @@ export const MetadataPicklistAttributeComponent = React.memo(
     };
 
     const onOptionSelect: ComboboxProps["onOptionSelect"] = (event, data) => {
-      //const matchingOption = data.optionText && options.some((option) => option.DisplayName.includes(data.optionText!));
       const displayName = data.optionValue && data.optionValue == "placeholder" ? "" : options.find((option) => option.LogicalName === data.optionValue)?.DisplayName;
       setSelectedOptions(data.optionValue == "placeholder" ? [] : [data.optionValue].filter((v): v is string => typeof v === "string"));
       setValue(data.optionValue == "placeholder" ? "" : displayName);
-      OnValueChanged(data.optionValue == "placeholder" || !data.optionText ? undefined : `${displayName}|${data.optionValue}`);
+      const outputValue = data.optionValue == "placeholder"
+        ? undefined
+        : OutputFormat === "BOTH"
+          ? `${displayName}|${data.optionValue}`
+          : data.optionValue;
+      OnValueChanged(outputValue);
       if(data.optionValue == "placeholder") {
         setMatchingOptions([...options]);
       }

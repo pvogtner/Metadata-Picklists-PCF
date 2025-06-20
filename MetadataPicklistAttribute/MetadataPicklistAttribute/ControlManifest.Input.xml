@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="PVPCF" constructor="MetadataPicklistAttribute" version="0.0.1" display-name-key="MetadataPicklistAttribute" description-key="MetadataPicklistAttribute description" control-type="virtual">
+  <control namespace="PVPCF" constructor="MetadataPicklistAttribute" version="1.0.3" display-name-key="MetadataPicklistAttribute" description-key="MetadataPicklistAttribute description" control-type="virtual">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
@@ -15,6 +15,10 @@
       <value name="Picklist" display-name-key="Picklist" description-key="Filter by Picklist">Picklist</value>
       <value name="Lookup" display-name-key="Lookup" description-key="Filter by Lookup">Lookup</value>
       <value name="Number" display-name-key="Number" description-key="Filter by Integer, Decimal, Float, or Money">Number</value>
+    </property>
+    <property name="outputFormat" display-name-key="Output Format (Display|Logical or Logical Only)" description-key="Pipe delimmited Display Name and Logical Name (BOTH) or Logical Only" of-type="Enum" usage="input" required="true">
+      <value name="BOTH" display-name-key="DisplayName|LogicalName" description-key="Pipe delimmited Display Name and Logical Name" default="true">BOTH</value>
+      <value name="LOGICAL_ONLY" display-name-key="Logical Only" description-key="Logical Name Only">LOGICAL_ONLY</value>
     </property>
     <resources>
       <code path="index.ts" order="1"/>

@@ -7,13 +7,15 @@ export const useStyles = makeStyles({
     flexDirection: "column",
     gap: "8px",
     width: "100%",
-    maxWidth: "1000px",
+    //maxWidth: "1000px",
   },
   dropdown: {
     width: "100%",
     minWidth: "unset",
     '>.fui-Combobox__input': {
         minWidth: "10px",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
     }
   },
   listbox: {

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="PVPCF" constructor="MetadataPicklistTable" version="0.0.1" display-name-key="MetadataPicklistTable" description-key="MetadataPicklistTable description" control-type="virtual" >
+  <control namespace="PVPCF" constructor="MetadataPicklistTable" version="1.0.3" display-name-key="MetadataPicklistTable" description-key="MetadataPicklistTable description" control-type="virtual">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="value" display-name-key="value" description-key="value" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="showTables" display-name-key="Show Tables" description-key="Show Tables" of-type="Enum" usage="input" required="true">
       <value name="APPONLY" display-name-key="Only Show Tables in App" description-key="Only Show Tables in App" default="true">APPONLY</value>
       <value name="ALLTABLES" display-name-key="Show All Tables" description-key="Show All Tables" default="true">ALLTABLES</value>
+    </property>
+    <property name="outputFormat" display-name-key="Output Format (Display|Logical or Logical Only)" description-key="Pipe delimmited Display Name and Logical Name (BOTH) or Logical Only" of-type="Enum" usage="input" required="true">
+      <value name="BOTH" display-name-key="DisplayName|LogicalName" description-key="Pipe delimmited Display Name and Logical Name" default="true">BOTH</value>
+      <value name="LOGICAL_ONLY" display-name-key="Logical Only" description-key="Logical Name Only">LOGICAL_ONLY</value>
     </property>
     <resources>
       <code path="index.ts" order="1"/>
