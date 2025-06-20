@@ -14,6 +14,8 @@ export const useStyles = makeStyles({
     minWidth: "unset",
     '>.fui-Combobox__input': {
         minWidth: "10px",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
     }
   },
   listbox: {

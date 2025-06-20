@@ -85,7 +85,7 @@ export const MetadataPicklistTableComponent = React.memo(
         </Dropdown>
       </FluentProvider>
     ) : (
-      <Input appearance="filled-darker" className={styles.root}></Input>
+      <Input appearance="filled-darker" className={styles.root} placeholder="---"></Input>
     );
   }
 );
