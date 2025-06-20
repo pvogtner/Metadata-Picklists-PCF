@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="PVPCF" constructor="MetadataPicklistTable" version="0.0.2" display-name-key="MetadataPicklistTable" description-key="MetadataPicklistTable description" control-type="virtual">
+  <control namespace="PVPCF" constructor="MetadataPicklistTable" version="1.0.3" display-name-key="MetadataPicklistTable" description-key="MetadataPicklistTable description" control-type="virtual">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="value" display-name-key="value" description-key="value" of-type="SingleLine.Text" usage="bound" required="true" />
