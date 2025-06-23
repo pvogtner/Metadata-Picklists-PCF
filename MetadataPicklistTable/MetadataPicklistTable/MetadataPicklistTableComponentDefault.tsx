@@ -43,7 +43,7 @@ export const MetadataPicklistTableComponent = React.memo(
       const displayName = tables.find(table => table.LogicalName === selectedLogicalName)?.DisplayName.UserLocalizedLabel.Label;
       setSelectedOptions(selectedLogicalName ? [selectedLogicalName] : []);
       setValue(displayName);
-    }, [tables]);
+    }, [tables, Value]);
 
     const onOptionSelect= (ev: SelectionEvents, data: OptionOnSelectData) => {
       setSelectedOptions(data.optionValue == "placeholder" ? [] : [data.optionValue].filter((v): v is string => typeof v === "string"));
