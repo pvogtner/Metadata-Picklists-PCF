@@ -4,7 +4,7 @@
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="tableName" display-name-key="Table_Name" description-key="Table Name" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="tableName" display-name-key="Table_Name" description-key="Table Name" of-type="SingleLine.Text" usage="input" required="true" />
     <property name="customFilter" display-name-key="Custom_Filter" description-key="Custom Attribute Filter" of-type="Enum" usage="input" required="true">
       <value name="None" display-name-key="No Filter" description-key="No Custom Filter" default="true">None</value>
       <value name="Boolean" display-name-key="Boolean" description-key="Filter by Boolean">Boolean</value>
