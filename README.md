@@ -18,7 +18,7 @@ These are 2 PCF controls using Fluent v9 - one for tables and one for attributes
 #### Parameters:
 - Bound to SingleLine.Text field
 - TableName
-  - Bound to SingleLine.Text field
+  - SingleLine.Text - Can set manual input or bind to field in form configuration
   - Value can be Table Logical Name or *DisplayName|LogicalName*
 - Output Format (Enum)
   - **Both**: String output as pipe-delimitted string *(DisplayName|LogicalName)*
